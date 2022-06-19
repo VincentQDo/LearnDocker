@@ -1,20 +1,39 @@
-console.log('Hello From javascript')
+let num = 0
+const test = document.getElementsByClassName("number")[0]
+test.innerText = num
+let incVar = 0
+let decVar = 0
 
-// Function to do an Ajax call
-const doAjax = async () => {
-  const response = await fetch('http://localhost:3000/'); // Generate the Response object
-  if (response.ok) {
-    const jsonValue = await response.json(); // Get JSON value from the response body
-    return Promise.resolve(jsonValue);
-  } else {
-    return Promise.reject('*** PHP file not found');
-  }
+fetch('http://localhost:3000/counter', { mode: 'no-cors' })
+  .then(res => {
+    if (res.ok) {
+      return res.json()
+    } else {
+      console.error(res.status)
+    }
+  })
+  .then(jsonRes => {
+    console.log(jsonRes)
+  })
+
+function numChange(changeNum) {
+  num += Number(changeNum)
+  test.innerText = num
 }
 
-// Call the function and output value or error message to console
-doAjax().then(console.log).catch(console.log);
+function increaseClicked() {
+  incVar = document.getElementById("increaseVar").value
+  console.log(incVar)
+  numChange(incVar)
+}
 
-fetch('https://animechan.vercel.app/api/random')
-.then(res => res.json())
-.then(res => console.log(res))
-.catch(() => console.log('Something went wrong with res'))
+function decreaseClicked() {
+  decVar = document.getElementById("decreaseVar").value
+  console.log(decVar)
+  numChange(decVar * (-1))
+}
+
+function reset() {
+  num = 0
+  test.innerText = num
+}

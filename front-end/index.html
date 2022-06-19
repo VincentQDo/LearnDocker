@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,15 @@
     <link rel="stylesheet" href="index.css">
     <title>NodeJs Express Learn</title>
 </head>
+
 <body>
-    <p class="hello-world">Hello World</p>
+    <p class="number">0</p>
+    <button id="decrease" onclick="decreaseClicked()" class="button">Decrease</button>
+    <button id="increase" onclick="increaseClicked()" class="button">Increase</button>
+    <input id="decreaseVar" type="text" placeholder="enter number to decrease by">
+    <input id="increaseVar" type="text" placeholder="enter number to increase by">
+    <button type="reset" onclick="reset()" class="button">Reset</button>
 </body>
 <script src="./index.js"></script>
+
 </html>
